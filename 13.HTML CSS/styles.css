@@ -1,0 +1,25 @@
+.paragraph-text {
+    color: green;
+}
+
+#h3-text {
+    font-weight: bold;
+    color: red;
+}
+
+p {
+    color: blue;
+}
+
+table, th, td{
+    border:1px solid black;
+    border-collapse:collapse;
+}
+
+td {
+    color:orange
+}
+
+.th-hover:hover {
+    color:red
+}
