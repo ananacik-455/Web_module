@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>About me</title>
+</head>
+<body>
+    <h2>Information about me:</h2>
+
+    {% with message="Hello" %}
+        <h2>{{ message|add:" Django!" }} </h2>
+    {% endwith %}
+
+    {% with a=10 b=15 %}
+        <p> Sum:{{ a|add:b }} </p>
+    {% endwith %}
+
+    {% with name="tom" %}
+        <p> Name: {{ name|capfirst }} </p>
+    {% endwith %}
+
+    {% with sentence="I like Python!" %}
+        <p> {{ sentence|cut:"like" }} </p>
+    {% endwith %}
+
+    {{ name|default:"Undefined" }}  {# name|default_if_none:"string instead of None" #}
+
+    {%  with some_float=7.883 b=3456.22 %}
+        <p>{{ some_float|floatformat }}</p>
+        <p>{{ some_float|floatformat:2 }}</p>
+        <p>{{ some_float|floatformat:0 }}</p>
+        <p>{{ some_float|floatformat:"-2" }}</p>
+
+        <p>{{ b|floatformat:"2g" }}</p>
+
+    {% endwith %}
+
+    {% include "hello/banner.html"  with tutorial="Java" topic="'Чому не пайтон!?'"%}
+
+
+
+</body>
+</html>

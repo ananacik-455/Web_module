@@ -1,0 +1,59 @@
+{% extends "hello/base.html" %}
+{% load static %}
+
+{% block title %}Main{% endblock title%}
+
+
+{% block header %}Welcome!{% endblock header%}
+
+{% block content %}
+    <h2>{{ header }}</h2>
+    {{ message }}
+        {% autoescape off %}
+            {{ message }}
+        {% endautoescape %}
+
+    {# Some comment #}
+
+    {% comment %}
+
+        Коментар
+        багаторядковий
+
+    {% endcomment %}
+
+    {% if digit >= 10 %}
+<!--        При виконанні умови-->
+        <p>My digit: {{ digit }}</p>
+     {% elif digit >= 0 %}
+<!--        При виконанні умови-->
+        <p>My digit (lower 10): {{ digit }}</p>
+    {% else %}
+        <p>Digit is negative!</p>
+    {% endif %}
+
+    {% if a > 0 and b > 0 %}
+        <p>Both digits positive</p>
+    {% elif a > 0 and b <= 0 %}
+        <p>A is positive, B is negative</p>
+    {% elif a <= 0 and b > 0 %}
+        <p>B is positive, A is negative</p>
+    {% else %}
+        <p> Both digits negative</p>
+    {% endif %}
+
+    {% with name="Tom" age=33 %}
+        <p>Name: {{name}}</p>
+        <p>Age: {{age}}</p>
+    {% endwith %}
+
+    <p>Current year: {% now "Y" %}</p>
+    <p>Full date: {% now "F j, Y" %}</p>
+    <p>Full datetime: {% now "N j, Y, P" %}</p>
+
+
+    <img src="{% static 'images/python_icon.png' %}" alt="Python icon">
+
+    {% include "hello/banner.html" with tutorial="Python" topic="Loops" %}
+
+{% endblock content%}

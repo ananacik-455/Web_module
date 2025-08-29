@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Basic name{% endblock title%} </title>
+    <link rel="stylesheet" href="{% static 'css/styles.css'%}">
+</head>
+<body>
+    <header>
+        <a href="/">Головна</a> | <a href="/about">About</a>
+    </header>
+
+    <main>
+      <h1>{% block header %}{% endblock header%}</h1>
+      <div>{% block content %}{% endblock content%}</div>
+    </main>
+
+
+    <footer>
+      <p>All rights protected. {% now "Y" %}</p>
+    </footer>
+
+</body>
+</html>
