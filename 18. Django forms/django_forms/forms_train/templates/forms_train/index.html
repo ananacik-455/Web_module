@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Form test</title>
+</head>
+<body>
+<!--    <form method="post" action="postuser/">-->
+<!--        {% csrf_token %}-->
+<!--        <p> Ім'я: <br> <input name="name"></p>-->
+<!--        <p>Вік: <br> <input type="number" name="age"></p>-->
+<!--        <input type="submit" value="Відправити">-->
+<!--    </form>-->
+
+    {% for field in form %}
+        <div class="form-group">
+            {{ field.label }}
+            <div> {{ field }}</div>
+            {% if field.errors %}
+                {% for error in field.errors %}
+                    <div class="alert alert-danger">
+                        {{ error }}
+                    </div>
+                {% endfor %}
+            {% endif %}
+        </div>
+    {% endfor %}
+</body>
+</html>
