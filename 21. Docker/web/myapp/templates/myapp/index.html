@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Список людей</title>
+</head>
+<body>
+
+    <form method="POST" action="create/">
+        {% csrf_token %}
+        <p>
+            <label>Ім'я: </label>
+            <input type="text" name="name">
+        </p>
+        <p>
+            <label>Вік: </label>
+            <input type="number" name="age">
+        </p>
+        <input type="submit" value="Додати">
+    </form>
+
+
+    <h2>Список людей</h2>
+
+    <table>
+        <thead>
+            <th>ІД</th>
+            <th>Ім'я</th>
+            <th>Вік</th>
+            <th></th>
+        </thead>
+        <tbody>
+        {% for person in people %}
+        <tr>
+            <td>{{ person.id }}</td>
+            <td>{{ person.name }}</td>
+            <td>{{ person.age }}</td>
+            <td><a href="edit/{{ person.id }}">Змінити</a> <a href="delete/{{ person.id }}">Видалити</a></td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+</body>
+</html>
